@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Jacob (Jacobin904) - Développeur, Créateur de contenu et jeune professionnel résilient basé au Québec.">
+    <meta name="description" content="Portfolio de Jacob (Jacobin904) - Direction technique, créateur de contenu et jeune professionnel résilient basé au Québec.">
     <title>Jacob | Jacobin904 - Portfolio</title>
     <style>
         :root {
@@ -23,7 +23,6 @@
         a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
         ul { list-style: none; }
 
-        /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%; background-color: rgba(15, 17, 21, 0.95);
             backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); z-index: 1000; padding: 1rem 5%;
@@ -35,7 +34,6 @@
         .nav-links a:hover { color: var(--text-primary); }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
 
-        /* Hero */
         .hero {
             min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
             padding: 0 5%; background: radial-gradient(circle at top right, rgba(88, 101, 242, 0.15), transparent 40%);
@@ -51,7 +49,6 @@
         .btn-outline { background: transparent; border: 2px solid var(--accent); margin-left: 1rem; }
         .btn-outline:hover { background: rgba(88, 101, 242, 0.1); }
 
-        /* Sections */
         section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
         .section-title { font-size: 2rem; margin-bottom: 3rem; text-align: center; position: relative; }
         .section-title::after {
@@ -59,7 +56,6 @@
             margin: 0.5rem auto 0; border-radius: 2px;
         }
 
-        /* About */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         .about-text p { color: var(--text-secondary); margin-bottom: 1rem; }
         .highlight-box {
@@ -67,7 +63,6 @@
             border-radius: 0 8px 8px 0; margin-top: 1.5rem; font-style: italic; color: var(--text-primary);
         }
 
-        /* Values / Icons */
         .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         .value-card {
             background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);
@@ -78,7 +73,6 @@
         .value-card h3 { margin-bottom: 0.5rem; }
         .value-card p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        /* Academic & Engagement */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline-item {
             background: var(--bg-card); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;
@@ -87,7 +81,6 @@
         .timeline-item h3 { color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
         .timeline-item p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        /* Projects */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .project-card {
             background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05);
@@ -101,12 +94,19 @@
         .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag { background: rgba(88, 101, 242, 0.15); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 
-        /* Contact & Footer */
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+        .social-btn {
+            display: flex; align-items: center; gap: 0.5rem; background: var(--bg-card);
+            padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease; color: var(--text-primary); font-weight: 500;
+        }
+        .social-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .social-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
         .contact { text-align: center; background: var(--bg-secondary); border-radius: 16px; padding: 4rem 2rem; margin-bottom: 2rem; }
         .contact p { color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-secondary);
@@ -130,8 +130,7 @@
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">À propos</a></li>
-                <li><a href="#values">Valeurs</a></li>
-                <li><a href="#academic">Parcours</a></li>
+                <li><a href="#skills">Compétences</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -141,109 +140,77 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Salut, je suis <span>Jacob</span></h1>
-            <p>Développeur, créateur de contenu et jeune professionnel basé au Québec. Passionné par le réalisme, la technologie et la construction d'espaces numériques sécuritaires et bienveillants.</p>
+            <p>Direction technique, créateur de contenu et jeune professionnel basé au Québec. Passionné par la création d'expériences numériques réalistes, sécuritaires et bienveillantes.</p>
             <div>
                 <a href="#projects" class="btn">Voir mes projets</a>
-                <a href="https://github.com/Jacobin904" target="_blank" class="btn btn-outline">Mon GitHub</a>
+                <a href="#contact" class="btn btn-outline">Me contacter</a>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <h2 class="section-title">Mon Histoire & Ma Résilience</h2>
+        <h2 class="section-title">Mon Histoire & Mes Valeurs</h2>
         <div class="about-grid">
             <div class="about-text">
-                <p>Mon parcours n'a pas toujours été un long fleuve tranquille. J'ai dû faire face à des défis personnels majeurs très jeune, ce qui m'a forcé à grandir vite et à développer un sens aigu de la protection envers mes proches.</p>
-                <p>Grâce au soutien inconditionnel de ma mère, qui a su se battre pour nous offrir un cadre sécuritaire, j'ai pu tourner la page sur un passé toxique. La justice a reconnu notre droit à la paix, et cette victoire a forgé en moi une détermination sans faille.</p>
-                <p>Aujourd'hui, je canalise cette force dans mes études, mes projets de développement et mon désir d'aider les autres. Je sais ce que vaut la loyauté, et je m'entoure de personnes authentiques qui m'aident à garder les pieds sur terre.</p>
+                <p>Mon parcours m'a appris très jeune la valeur de la résilience et de la protection des miens. Grâce au soutien inconditionnel de ma mère, j'ai pu tourner la page sur un passé toxique et me reconstruire dans un cadre sécuritaire et aimant.</p>
+                <p>Aujourd'hui, je canalise cette force dans mes études, mes projets techniques et mon désir d'aider les autres. Je sais ce que vaut la loyauté, et je m'entoure de personnes authentiques qui m'aident à garder les pieds sur terre.</p>
+                
                 <div class="highlight-box">
-                    "Je m'efforce d'être une lumière pour les autres, tout en apprenant à protéger ma propre paix et à poser des limites saines."
+                    <strong>Côté cœur :</strong> Je suis célibataire et je crois profondément en la valeur d'une relation saine. Je souhaite rencontrer une partenaire authentique, bienveillante et complice, avec qui construire quelque chose de vrai, m'épanouir et avancer ensemble dans la vie.
                 </div>
             </div>
             <div class="values-grid" style="grid-template-columns: 1fr;">
                 <div class="value-card" style="text-align: left; display: flex; align-items: flex-start; gap: 1rem;">
                     <svg class="icon-svg" style="min-width: 32px;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                     <div>
-                        <h3>Intégrité & Protection</h3>
-                        <p>J'ai appris à mes dépens que la gentillesse ne doit pas être une faiblesse. Je sais maintenant poser des limites claires face à la manipulation.</p>
+                        <h3>Intégrité & Limites saines</h3>
+                        <p>J'ai appris que la gentillesse ne doit pas être une faiblesse. Je sais maintenant poser des limites claires et m'entourer de personnes qui me respectent vraiment.</p>
                     </div>
                 </div>
                 <div class="value-card" style="text-align: left; display: flex; align-items: flex-start; gap: 1rem;">
-                    <svg class="icon-svg" style="min-width: 32px;" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    <svg class="icon-svg" style="min-width: 32px;" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                     <div>
                         <h3>Entraide & Communauté</h3>
-                        <p>J'aime me sentir utile. Que ce soit en aidant bénévolement le personnel de mon école ou en soutenant mes amis, comme Alicia, qui ont su être là pour moi.</p>
+                        <p>J'aime me sentir utile. Que ce soit en aidant bénévolement à l'école ou en soutenant mes amis proches, je m'investis pour ceux qui comptent.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="values">
-        <h2 class="section-title">Mes Forces</h2>
+    <section id="skills">
+        <h2 class="section-title">Mes Compétences</h2>
         <div class="values-grid">
             <div class="value-card">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                <h3>Résilience</h3>
-                <p>Gestion proactive du TDAH et de l'anxiété. J'ai transformé mes défis en une capacité d'adaptation et d'hyperfocus sur mes passions.</p>
+                <h3>Direction Technique & IA</h3>
+                <p>Spécialisé dans l'architecture de projets et le prompt engineering avancé. Je conçois la logique, le cahier des charges et la vision, puis j'orchestre des outils d'IA pour générer un code propre et efficace.</p>
             </div>
             <div class="value-card">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <h3>Excellence Académique</h3>
-                <p>Progression constante. De la musique (97%) aux sports électroniques (Esports) et à l'anglais (90%), je m'investis à fond dans ce que j'entreprends.</p>
-            </div>
-            <div class="value-card">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                <h3>Discernement</h3>
-                <p>J'ai appris à reconnaître les comportements manipulateurs et à accorder ma confiance uniquement à ceux qui font leurs preuves par des actes, pas des mots.</p>
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
+                <h3>Communication & Diplomatie</h3>
+                <p>Capacité à structurer des demandes claires, à gérer des communautés et à collaborer efficacement, même à distance.</p>
             </div>
             <div class="value-card">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                <h3>Empathie Authentique</h3>
-                <p>Je cherche à construire des relations saines, basées sur le respect mutuel, la communication honnête et le soutien inconditionnel.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="academic">
-        <h2 class="section-title">Parcours & Engagement</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>
-                    <svg class="icon-svg" style="width: 24px; height: 24px; margin:0;" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                    Secondaire 3 (En cours) - Académie Sainte-Marie
-                </h3>
-                <p>Consolidation des acquis et maturité accrue. Implication bénévole active auprès du personnel de l'école. J'apprends à trouver le juste milieu dans mon désir d'aider, pour que mon soutien soit toujours bien reçu et constructif.</p>
-            </div>
-            <div class="timeline-item">
-                <h3>
-                    <svg class="icon-svg" style="width: 24px; height: 24px; margin:0;" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                    Secondaire 1 & 2 - Adaptation et Dépassement
-                </h3>
-                <p>Malgré des défis personnels, j'ai maintenu d'excellents résultats dans mes domaines de passion (Esports, Anglais, Sciences). J'ai assuré du "facing" bénévole à l'heure du dîner et aidé l'école sans réserve lors de la fin d'année.</p>
-            </div>
-            <div class="timeline-item">
-                <h3>
-                    <svg class="icon-svg" style="width: 24px; height: 24px; margin:0;" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
-                    Fin du Primaire (2024)
-                </h3>
-                <p>Diplômé avec succès de l'école De Saint-Michel, avec des mentions d'excellence en musique (97%) et en arts plastiques, posant les bases de ma créativité actuelle.</p>
+                <h3>Création de Contenu</h3>
+                <p>Photographie, streaming et conception d'identités visuelles soignées pour des projets communautaires ou personnels.</p>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2 class="section-title">Projets Techniques</h2>
+        <h2 class="section-title">Projets Réalisés</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3>Serveur RP Québécois (Roblox)</h3>
+                    <h3>Univers RP Québécois (Roblox)</h3>
                 </div>
                 <div class="project-body">
-                    <p>Conception d'un environnement Emergency Response: Liberty County (ER:LC) francophone et réaliste. Création de scripts Lua, d'uniformes fidèles et de documents RP officiels pour les services d'urgence.</p>
+                    <p>Conception d'un environnement Emergency Response: Liberty County (ER:LC) francophone et réaliste. Direction de la création de scripts, d'uniformes fidèles et de documents RP officiels.</p>
                     <div class="tags">
                         <span class="tag">Roblox Studio</span>
-                        <span class="tag">Lua</span>
+                        <span class="tag">Direction de projet</span>
                         <span class="tag">Game Design</span>
                     </div>
                 </div>
@@ -254,11 +221,11 @@
                     <h3>Écosystème Discord & CAD</h3>
                 </div>
                 <div class="project-body">
-                    <p>Développement de bots Python pour la gestion de serveurs : vérification croisée Roblox/Discord, système de logs, tableaux de bord web et outils de gestion pour le staff.</p>
+                    <p>Architecture et déploiement de bots pour la gestion de serveurs : vérification croisée, système de logs, tableaux de bord web et outils d'automatisation pour le staff.</p>
                     <div class="tags">
-                        <span class="tag">Python</span>
+                        <span class="tag">Prompt Engineering</span>
                         <span class="tag">Discord API</span>
-                        <span class="tag">Webhooks</span>
+                        <span class="tag">Automation</span>
                     </div>
                 </div>
             </div>
@@ -271,7 +238,7 @@
                     <p>Création de sites vitrines (hébergés sur GitHub Pages) et conception d'identités visuelles professionnelles (logos, bannières) pour des projets communautaires.</p>
                     <div class="tags">
                         <span class="tag">HTML/CSS</span>
-                        <span class="tag">JavaScript</span>
+                        <span class="tag">IA Générative</span>
                         <span class="tag">UI/UX</span>
                     </div>
                 </div>
@@ -281,10 +248,27 @@
 
     <section id="contact">
         <div class="contact">
-            <h2 class="section-title">Restons en contact</h2>
-            <p>Je suis toujours ouvert à discuter de projets de développement, d'idées d'optimisation ou de collaborations autour de la création d'espaces numériques professionnels et bienveillants.</p>
-            <a href="https://github.com/Jacobin904" target="_blank" class="btn">Mon GitHub</a>
-            <a href="https://discord.com/users/Jacobin904" target="_blank" class="btn btn-outline">Discord</a>
+            <h2 class="section-title">Me Contacter & Me Suivre</h2>
+            <p>Pour toute collaboration, question sur mes projets ou simplement pour échanger, voici les meilleures façons de me joindre. (J'ai volontairement gardé uniquement mes réseaux professionnels et créatifs ici pour protéger ma vie privée).</p>
+            
+            <div class="social-links">
+                <a href="https://discord.com/users/1281784488854159421" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    Discord
+                </a>
+                <a href="https://github.com/Jacobin904" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://www.roblox.com/users/4902316021/profile" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M5.164 0L0 18.816 18.836 24 24 5.184 5.164 0zm1.652 14.89l-1.32-4.83 4.83 1.32 1.32 4.83-4.83-1.32z"/></svg>
+                    Roblox
+                </a>
+                <a href="https://www.instagram.com/jacobin_babouain?igsh=MTVvd2pieGdoMHZkMA%3D%3D&utm_source=qr" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Instagram
+                </a>
+            </div>
         </div>
     </section>
 
@@ -314,7 +298,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.value-card, .project-card, .timeline-item').forEach(el => {
+        document.querySelectorAll('.value-card, .project-card, .timeline-item, .social-btn').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
