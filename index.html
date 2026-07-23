@@ -146,13 +146,13 @@
         .social-btn:hover { background: var(--accent); border-color: var(--accent); color: #05070a; transform: translateY(-5px); box-shadow: 0 10px 30px var(--accent-glow); }
         .social-btn svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
 
-        /* Galerie photo - Filtre harmonisé avec le site */
+        /* Galerie photo - Filtres NATURELS basés sur les couleurs RÉELLES des photos */
         .photo-frame {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             height: 450px;
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2332 100%);
+            background: #1a1f2e;
             border: 1px solid var(--border);
         }
         .photo-frame img {
@@ -160,41 +160,19 @@
             height: 100%;
             object-fit: contain;
             object-position: center center;
-            /* Filtre qui harmonise les couleurs avec le thème bleu/vert du site */
+            /* Filtre NATUREL qui préserve les vraies couleurs des photos */
             filter: 
-                brightness(0.92) 
-                contrast(1.08) 
-                saturate(0.75) 
-                sepia(0.15) 
-                hue-rotate(190deg);
+                brightness(1.02) 
+                contrast(1.05) 
+                saturate(1.08);
             transition: filter 0.5s ease, transform 0.5s ease;
         }
         .photo-frame:hover img {
             filter: 
-                brightness(0.95) 
-                contrast(1.12) 
-                saturate(0.85) 
-                sepia(0.1) 
-                hue-rotate(190deg);
+                brightness(1.05) 
+                contrast(1.08) 
+                saturate(1.12);
             transform: scale(1.02);
-        }
-        /* Overlay coloré qui teinte l'image avec les couleurs du site */
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                135deg, 
-                rgba(88, 166, 255, 0.12) 0%, 
-                rgba(63, 185, 80, 0.08) 50%,
-                rgba(88, 166, 255, 0.05) 100%
-            );
-            mix-blend-mode: overlay;
-            pointer-events: none;
-            z-index: 1;
         }
         .photo-caption {
             position: absolute;
@@ -464,7 +442,7 @@
     <section id="photos" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto; padding-top: 3rem;">
         <div class="section-header animate-on-scroll">
             <h2 class="section-title">Galerie Photo</h2>
-            <p class="section-subtitle">Moments marquants de mon parcours scolaire. Les images sont harmonisées avec les couleurs de mon univers numérique.</p>
+            <p class="section-subtitle">Moments marquants de mon parcours scolaire. Les couleurs naturelles des photos sont préservées et harmonisées.</p>
             <div class="divider"></div>
         </div>
         
