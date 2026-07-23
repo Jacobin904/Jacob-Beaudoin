@@ -3,120 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Jacob (Jacobin904) - Direction technique, créateur de contenu et jeune professionnel résilient basé au Québec.">
-    <title>Jacob | Jacobin904 - Portfolio</title>
+    <meta name="description" content="Portfolio exhaustif de Jacob (Jacobin904) - Développeur, architecte de projets IA, créateur de contenu et jeune homme résilient basé au Québec.">
+    <title>Jacob Beaudoin | Jacobin904 - Portfolio Exhaustif</title>
     <style>
         :root {
-            --bg-primary: #0f1115;
-            --bg-secondary: #161920;
-            --bg-card: #1e222b;
+            --bg-primary: #0a0c10;
+            --bg-secondary: #11141c;
+            --bg-card: #1a1f2b;
+            --bg-card-hover: #222838;
             --text-primary: #ffffff;
-            --text-secondary: #a0aec0;
+            --text-secondary: #94a3b8;
             --accent: #5865F2;
             --accent-hover: #4752c4;
+            --quebec-blue: #0055A4;
             --gradient: linear-gradient(135deg, #5865F2 0%, #00d2ff 100%);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
         ul { list-style: none; }
 
+        /* Navigation */
         nav {
-            position: fixed; top: 0; width: 100%; background-color: rgba(15, 17, 21, 0.95);
-            backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); z-index: 1000; padding: 1rem 5%;
+            position: fixed; top: 0; width: 100%; background-color: rgba(10, 12, 16, 0.95);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 1rem 5%;
         }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
         .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; }
+        .nav-links a { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: var(--accent); transition: width 0.3s; }
         .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
 
+        /* Hero */
         .hero {
             min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            padding: 0 5%; background: radial-gradient(circle at top right, rgba(88, 101, 242, 0.15), transparent 40%);
+            padding: 0 5%; background: radial-gradient(circle at 80% 20%, rgba(88, 101, 242, 0.15), transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.1), transparent 50%);
         }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero-content h1 { font-size: 4rem; margin-bottom: 1.5rem; line-height: 1.1; font-weight: 800; }
         .hero-content h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-content p { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
+        .hero-content p { font-size: 1.3rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 2.5rem; }
         .btn {
-            display: inline-block; padding: 0.8rem 2rem; background: var(--accent); color: white;
-            border-radius: 8px; font-weight: 600; transition: transform 0.2s, background 0.3s;
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.2rem; background: var(--accent); color: white;
+            border-radius: 8px; font-weight: 600; transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
         }
-        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3); }
         .btn-outline { background: transparent; border: 2px solid var(--accent); margin-left: 1rem; }
-        .btn-outline:hover { background: rgba(88, 101, 242, 0.1); }
+        .btn-outline:hover { background: rgba(88, 101, 242, 0.1); box-shadow: none; }
 
-        section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 2rem; margin-bottom: 3rem; text-align: center; position: relative; }
-        .section-title::after {
-            content: ''; display: block; width: 60px; height: 4px; background: var(--gradient);
-            margin: 0.5rem auto 0; border-radius: 2px;
+        /* Sections */
+        section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .section-subtitle { color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+        .divider { width: 80px; height: 4px; background: var(--gradient); margin: 1rem auto 0; border-radius: 2px; }
+
+        /* Cards & Grids */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+        .card {
+            background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border);
+            transition: transform 0.3s, border-color 0.3s, background 0.3s;
         }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: var(--bg-card-hover); }
+        .card-icon { width: 48px; height: 48px; fill: var(--accent); margin-bottom: 1.5rem; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--text-primary); }
+        .card p, .card li { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .card ul { padding-left: 1.2rem; }
+        .card ul li { list-style-type: disc; margin-bottom: 0.4rem; }
 
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .about-text p { color: var(--text-secondary); margin-bottom: 1rem; }
-        .highlight-box {
-            background: var(--bg-card); border-left: 4px solid var(--accent); padding: 1.5rem;
-            border-radius: 0 8px 8px 0; margin-top: 1.5rem; font-style: italic; color: var(--text-primary);
+        /* Timeline */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border);
         }
-
-        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .value-card {
-            background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, border-color 0.3s; text-align: center;
-        }
-        .value-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .icon-svg { width: 48px; height: 48px; fill: var(--accent); margin-bottom: 1rem; }
-        .value-card h3 { margin-bottom: 0.5rem; }
-        .value-card p { color: var(--text-secondary); font-size: 0.9rem; }
-
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline-item {
-            background: var(--bg-card); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05); position: relative;
+            position: relative; padding-left: 60px; margin-bottom: 3rem;
         }
-        .timeline-item h3 { color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .timeline-item p { color: var(--text-secondary); font-size: 0.95rem; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card {
-            background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s;
+        .timeline-dot {
+            position: absolute; left: 11px; top: 5px; width: 20px; height: 20px; border-radius: 50%;
+            background: var(--bg-primary); border: 3px solid var(--accent); z-index: 2;
         }
-        .project-card:hover { transform: translateY(-5px); }
-        .project-header { background: var(--bg-secondary); padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .project-header h3 { color: var(--accent); }
-        .project-body { padding: 1.5rem; }
-        .project-body p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tag { background: rgba(88, 101, 242, 0.15); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .timeline-content {
+            background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border);
+        }
+        .timeline-content h3 { color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.8rem; }
+        .timeline-date { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; display: block; }
 
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.1), rgba(0, 210, 255, 0.05));
+            border-left: 4px solid var(--accent); padding: 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0;
+        }
+        .highlight-box h4 { color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .highlight-box p { color: var(--text-secondary); font-style: italic; }
+
+        /* Tech Specs */
+        .spec-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: var(--text-secondary); font-weight: 500; }
+        .spec-value { color: var(--text-primary); font-weight: 600; text-align: right; }
+
+        /* Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+        .tag { 
+            background: rgba(88, 101, 242, 0.15); color: var(--accent); padding: 0.3rem 0.9rem; 
+            border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(88, 101, 242, 0.3);
+        }
+
+        /* Social Links */
         .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
         .social-btn {
-            display: flex; align-items: center; gap: 0.5rem; background: var(--bg-card);
-            padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease; color: var(--text-primary); font-weight: 500;
+            display: flex; align-items: center; gap: 0.8rem; background: var(--bg-card);
+            padding: 1rem 2rem; border-radius: 12px; border: 1px solid var(--border);
+            transition: all 0.3s ease; color: var(--text-primary); font-weight: 600;
         }
         .social-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
-        .social-btn svg { width: 20px; height: 20px; fill: currentColor; }
+        .social-btn svg { width: 22px; height: 22px; fill: currentColor; }
 
-        .contact { text-align: center; background: var(--bg-secondary); border-radius: 16px; padding: 4rem 2rem; margin-bottom: 2rem; }
-        .contact p { color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        /* Footer */
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border); background: var(--bg-secondary); }
 
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             .nav-links {
                 display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-secondary);
-                flex-direction: column; padding: 1rem; text-align: center;
+                flex-direction: column; padding: 1.5rem; text-align: center; border-bottom: 1px solid var(--border);
             }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            .btn-outline { margin-left: 0; margin-top: 1rem; display: block; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .btn-outline { margin-left: 0; margin-top: 1rem; display: flex; justify-content: center; }
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 50px; }
+            .timeline-dot { left: 6px; }
         }
     </style>
 </head>
@@ -126,12 +158,14 @@
         <div class="nav-container">
             <a href="#" class="logo">Jacobin904</a>
             <div class="menu-toggle" onclick="toggleMenu()">
-                <svg class="icon-svg" style="width: 24px; height: 24px; fill: white; margin:0;" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                <svg style="width: 28px; height: 28px; fill: white;" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
+                <li><a href="#histoire">Mon Histoire</a></li>
+                <li><a href="#academique">Parcours Académique</a></li>
+                <li><a href="#technique">Équipement & Technique</a></li>
+                <li><a href="#projets">Projets Détaillés</a></li>
+                <li><a href="#personnel">Vie & Valeurs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -139,141 +173,268 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Salut, je suis <span>Jacob</span></h1>
-            <p>Direction technique, créateur de contenu et jeune professionnel basé au Québec. Passionné par la création d'expériences numériques réalistes, sécuritaires et bienveillantes.</p>
+            <h1>Je suis <span>Jacob Beaudoin</span></h1>
+            <p>Architecte de projets numériques, développeur assisté par IA et jeune homme résilient basé au Québec. Je transforme des visions complexes en écosystèmes Discord, Roblox et Web fonctionnels, réalistes et sécuritaires.</p>
             <div>
-                <a href="#projects" class="btn">Voir mes projets</a>
+                <a href="#projets" class="btn">
+                    <svg style="width: 20px; height: 20px; fill: white;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                    Explorer mes projets
+                </a>
                 <a href="#contact" class="btn btn-outline">Me contacter</a>
             </div>
         </div>
     </section>
 
-    <section id="about">
-        <h2 class="section-title">Mon Histoire & Mes Valeurs</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>Mon parcours m'a appris très jeune la valeur de la résilience et de la protection des miens. Grâce au soutien inconditionnel de ma mère, j'ai pu tourner la page sur un passé toxique et me reconstruire dans un cadre sécuritaire et aimant.</p>
-                <p>Aujourd'hui, je canalise cette force dans mes études, mes projets techniques et mon désir d'aider les autres. Je sais ce que vaut la loyauté, et je m'entoure de personnes authentiques qui m'aident à garder les pieds sur terre.</p>
-                
+    <section id="histoire">
+        <div class="section-header">
+            <h2 class="section-title">Mon Parcours de Résilience</h2>
+            <p class="section-subtitle">Les épreuves que j'ai traversées ont forgé mon caractère, mon sens de la justice et ma détermination à protéger ce qui compte vraiment.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Le tournant décisif</span>
+                    <h3>
+                        <svg style="width: 24px; height: 24px; fill: var(--accent);" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                        Le courage de se tenir debout
+                    </h3>
+                    <p>Tout a basculé un jour, sur un balcon au 5e étage à Sainte-Foy. Face à des menaces verbales de la part de mon ex-belle-mère et à l'inaction totale de mon père présent sur les lieux, j'ai fait le choix de parler. J'ai tout raconté à ma mère, Guylaine. Elle s'est tenue debout pour nous protéger, ma petite sœur Emmy et moi, et a engagé des procédures judiciaires.</p>
+                    <p style="margin-top: 1rem;"><strong>Résultat :</strong> La justice a tranché. Après plus de deux ans sans contact, la cour a officiellement suspendu les droits de décision de mon père sur ma vie (école, santé, passeports). La garde complète revient à ma mère, confirmant que nous sommes en sécurité avec elle. J'ai gagné ma liberté.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Juillet 2026</span>
+                    <h3>
+                        <svg style="width: 24px; height: 24px; fill: var(--accent);" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        L'épreuve de la vérité et du discernement
+                    </h3>
+                    <p>J'ai fait face à une tentative de manipulation psychologique sur Discord par une personne utilisant de fausses identités ("Orélie Côté", puis "Magalie Bédard"). Profitant de mon empathie et de mon besoin d'affection, cette personne a utilisé le chantage affectif.</p>
+                    <p style="margin-top: 1rem;">Grâce au soutien lucide de mon amie Alicia, j'ai ouvert les yeux : fausses excuses, incohérences vocales, scénarios extravagants. <strong>Leçon retenue :</strong> Ma gentillesse est une force, mais mes limites sont sacrées. Quelqu'un qui m'aime vraiment ne me fera jamais de chantage et ne se cachera pas derrière un écran. J'ai appris à repérer les manipulateurs et à protéger mon espace mental.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="academique" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto;">
+        <div class="section-header">
+            <h2 class="section-title">Évolution Académique & Engagement</h2>
+            <p class="section-subtitle">Malgré l'anxiété et le TDAH, j'ai transformé mes défis en une courbe de progression constante, en misant sur mes forces et mon désir d'aider.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                <h3>Fin du Primaire (2023-2024)</h3>
+                <p>École De Saint-Michel. Consolidation des bases avec succès.</p>
+                <ul>
+                    <li>Musique : <strong>97 %</strong></li>
+                    <li>Arts plastiques : <strong>84 %</strong></li>
+                    <li>Mathématiques : <strong>82 %</strong></li>
+                    <li>Sciences : <strong>79 %</strong></li>
+                </ul>
+            </div>
+            <div class="card">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                <h3>1re Secondaire (2024-2025)</h3>
+                <p>Académie Sainte-Marie. Période d'adaptation difficile en raison de soucis personnels, mais maintien des passions.</p>
+                <ul>
+                    <li>Esports : <strong>86 %</strong></li>
+                    <li>Sciences : <strong>75 %</strong> (avec félicitations de l'enseignant pour l'attitude)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+                <h3>2e & 3e Secondaire (2025-2026)</h3>
+                <p>Consolidation et maturité. Implication bénévole active (facing à l'heure du dîner, aide au personnel en fin d'année).</p>
+                <ul>
+                    <li>Anglais : <strong>90 %</strong> (dont 96 % à l'oral)</li>
+                    <li>Esports : <strong>93 %</strong></li>
+                    <li>Éducation physique : <strong>83 %</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Mon engagement communautaire</h4>
+            <p>J'aime me sentir utile. J'ai effectué du "facing" bénévolement sur l'heure du dîner la moitié de l'année en secondaire 1, et j'ai aidé le personnel de l'école à 100 % bénévolement quand il n'y avait plus de cours en secondaire 2. J'apprends à trouver le juste milieu pour que mon aide soit toujours bien reçue.</p>
+        </div>
+    </section>
+
+    <section id="technique">
+        <div class="section-header">
+            <h2 class="section-title">Écosystème Technique & Méthodologie</h2>
+            <p class="section-subtitle">Je ne suis pas seulement un exécutant, je suis un architecte. Je conçois la logique, le cahier des charges et la vision, puis j'orchestre des outils d'IA pour générer un code propre et efficace.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3>
+                    <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                    Configuration Matérielle
+                </h3>
+                <div class="spec-row"><span class="spec-label">Ordinateur portable</span><span class="spec-value">Lenovo 11BD003HCA</span></div>
+                <div class="spec-row"><span class="spec-label">Système d'exploitation</span><span class="spec-value">Windows 11 Professionnel</span></div>
+                <div class="spec-row"><span class="spec-label">Processeur</span><span class="spec-value">Intel Core i5-9400</span></div>
+                <div class="spec-row"><span class="spec-label">Carte graphique</span><span class="spec-value">Intel UHD Graphics 630</span></div>
+                <div class="spec-row"><span class="spec-label">Mémoire vive (RAM)</span><span class="spec-value">8 Go</span></div>
+                <div class="spec-row"><span class="spec-label">Appareil mobile</span><span class="spec-value">iPhone 11 (iOS)</span></div>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                    Méthodologie de Développement
+                </h3>
+                <p>Mon approche repose sur la <strong>direction technique et le prompt engineering avancé</strong>.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Rédaction de scripts et conception de bots via l'application <strong>Carnets</strong> sur iOS.</li>
+                    <li>Optimisation agressive du PC via scripts PowerShell (nettoyage, désinstallation de bloatware, amélioration des FPS et du réseau pour Roblox).</li>
+                    <li>Architecture de projets : je définis les règles, les structures de fichiers (main.py, admin.py, cad.py, etc.) et les objectifs, puis j'utilise l'IA pour produire le code que je valide et intègre.</li>
+                    <li>Hébergement et déploiement via <strong>GitHub Pages</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto;">
+        <div class="section-header">
+            <h2 class="section-title">Projets & Réalisations</h2>
+            <p class="section-subtitle">Une sélection détaillée de mes travaux, axés sur le réalisme, la structure professionnelle et l'immersion.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
+                <h3>Serveur ER:LC Québec RP</h3>
+                <p>Création d'un serveur Roblox Emergency Response: Liberty County entièrement francophone et basé sur les véritables services québécois.</p>
+                <div class="tags">
+                    <span class="tag">SPVQ</span><span class="tag">SQ</span><span class="tag">CTAQ</span>
+                    <span class="tag">SPCIQ</span><span class="tag">MTQ</span><span class="tag">RTC</span>
+                    <span class="tag">Postes Canada</span><span class="tag">Cour du Québec</span>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.85rem;">Travail minutieux sur les couleurs exactes (codes HEX), les bandes vertes/jaunes, les liveries, les sons, les scripts Lua et les documents RP officiels (permis, RAMQ RP, rapports).</p>
+            </div>
+
+            <div class="card">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
+                <h3>Bot Discord & Système CAD</h3>
+                <p>Développement d'une suite d'outils Python modulaires pour la gestion professionnelle de serveurs.</p>
+                <ul>
+                    <li><strong>Modules :</strong> main.py, admin.py, cad.py, dispatch.py, verification.py, logs.py.</li>
+                    <li><strong>Fonctionnalités :</strong> Vérification croisée Roblox ↔ Discord, gestion des permissions, système de logs détaillé, formulaires automatisés et intégration d'outils comme Melonly.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <h3>Développement Web & Design</h3>
+                <p>Conception de sites web et d'identités visuelles pour des projets communautaires.</p>
+                <ul>
+                    <li>Site vitrine pour "Sherbrooke-RP" (hébergé sur GitHub Pages).</li>
+                    <li>Tableau de bord web avec détection automatique des rôles Discord.</li>
+                    <li>Création de logos professionnels (ex: projet "BS" en nuances d'orange, moderne et symétrique) et de bannières de serveur.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="personnel">
+        <div class="section-header">
+            <h2 class="section-title">Vie Personnelle, Loisirs & Valeurs</h2>
+            <p class="section-subtitle">Au-delà du code, je suis un jeune homme avec des passions, des principes et une vision claire de mes relations.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="grid-2">
+            <div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3>
+                        <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        Relations & Quête de sens
+                    </h3>
+                    <p>Je suis actuellement célibataire. Je cherche à rencontrer une partenaire authentique, bienveillante, avec une belle voix et de belles qualités, qui saura me comprendre pour de vrai et m'aider à avancer. Avoir une personne de confiance sur qui compter, qui m'épaule et avec qui partager la vie, est quelque chose qui me tient énormément à cœur.</p>
+                    <p style="margin-top: 1rem;">Je dois beaucoup à mon entourage : ma mère <strong>Guylaine</strong>, mon pilier absolu, ma sœur <strong>Emmy</strong>, et mon amie <strong>Alicia Rioux</strong>, qui a su me protéger et me montrer la vérité quand j'en avais besoin. Je ne l'oublierai jamais.</p>
+                </div>
+
                 <div class="highlight-box">
-                    <strong>Côté cœur :</strong> Je suis célibataire et je crois profondément en la valeur d'une relation saine. Je souhaite rencontrer une partenaire authentique, bienveillante et complice, avec qui construire quelque chose de vrai, m'épanouir et avancer ensemble dans la vie.
+                    <h4>Ma métaphore personnelle</h4>
+                    <p>Parfois, j'ai une image forte dans ma tête : c'est comme si j'étais debout, avec une seule lumière allumée juste au-dessus de moi. J'ai très peur que si je fais quelque chose de travers, quelqu'un décide de l'éteindre et de me laisser dans le noir. C'est pourquoi je valorise tant la loyauté, la clarté et la douceur dans mes relations.</p>
                 </div>
             </div>
-            <div class="values-grid" style="grid-template-columns: 1fr;">
-                <div class="value-card" style="text-align: left; display: flex; align-items: flex-start; gap: 1rem;">
-                    <svg class="icon-svg" style="min-width: 32px;" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                    <div>
-                        <h3>Intégrité & Limites saines</h3>
-                        <p>J'ai appris que la gentillesse ne doit pas être une faiblesse. Je sais maintenant poser des limites claires et m'entourer de personnes qui me respectent vraiment.</p>
-                    </div>
+
+            <div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3>
+                        <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
+                        Loisirs & Centres d'Intérêt
+                    </h3>
+                    <ul>
+                        <li><strong>Roblox :</strong> Passionné par les jeux de gestion, Tycoons (Restaurant Tycoon 2, Retail Tycoon 2) et simulateurs. J'analyse constamment les mécaniques de jeu pour améliorer mes propres créations.</li>
+                        <li><strong>Photographie :</strong> Pratique exclusive de la photo (pas de vidéo). J'aime capturer des moments et créer des identités visuelles.</li>
+                        <li><strong>Streaming :</strong> Création de contenu et animation de communauté sur Twitch.</li>
+                        <li><strong>Cuisine :</strong> J'apprécie l'efficacité et les repas simples et réconfortants, comme des œufs et des toasts bien préparés.</li>
+                        <li><strong>Optimisation numérique :</strong> Nettoyage régulier de mon empreinte numérique (ex: suppression des likes TikTok) et maintenance de mon système.</li>
+                    </ul>
                 </div>
-                <div class="value-card" style="text-align: left; display: flex; align-items: flex-start; gap: 1rem;">
-                    <svg class="icon-svg" style="min-width: 32px;" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                    <div>
-                        <h3>Entraide & Communauté</h3>
-                        <p>J'aime me sentir utile. Que ce soit en aidant bénévolement à l'école ou en soutenant mes amis proches, je m'investis pour ceux qui comptent.</p>
-                    </div>
+
+                <div class="card">
+                    <h3>
+                        <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        Mes Principes de Vie
+                    </h3>
+                    <ul>
+                        <li>La gentillesse n'est pas une faiblesse, mais elle doit être protégée par des limites claires.</li>
+                        <li>Le réalisme et le détail font la différence entre un projet amateur et un projet professionnel.</li>
+                        <li>Je préfère recevoir toute l'information d'un coup, bien organisée et prête à l'emploi.</li>
+                        <li>Je suis fier de mon chemin, je sais ce que je vaux, et je regarde l'avenir avec confiance.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2 class="section-title">Mes Compétences</h2>
-        <div class="values-grid">
-            <div class="value-card">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                <h3>Direction Technique & IA</h3>
-                <p>Spécialisé dans l'architecture de projets et le prompt engineering avancé. Je conçois la logique, le cahier des charges et la vision, puis j'orchestre des outils d'IA pour générer un code propre et efficace.</p>
-            </div>
-            <div class="value-card">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
-                <h3>Communication & Diplomatie</h3>
-                <p>Capacité à structurer des demandes claires, à gérer des communautés et à collaborer efficacement, même à distance.</p>
-            </div>
-            <div class="value-card">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                <h3>Création de Contenu</h3>
-                <p>Photographie, streaming et conception d'identités visuelles soignées pour des projets communautaires ou personnels.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2 class="section-title">Projets Réalisés</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Univers RP Québécois (Roblox)</h3>
-                </div>
-                <div class="project-body">
-                    <p>Conception d'un environnement Emergency Response: Liberty County (ER:LC) francophone et réaliste. Direction de la création de scripts, d'uniformes fidèles et de documents RP officiels.</p>
-                    <div class="tags">
-                        <span class="tag">Roblox Studio</span>
-                        <span class="tag">Direction de projet</span>
-                        <span class="tag">Game Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Écosystème Discord & CAD</h3>
-                </div>
-                <div class="project-body">
-                    <p>Architecture et déploiement de bots pour la gestion de serveurs : vérification croisée, système de logs, tableaux de bord web et outils d'automatisation pour le staff.</p>
-                    <div class="tags">
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">Discord API</span>
-                        <span class="tag">Automation</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>Développement Web & Design</h3>
-                </div>
-                <div class="project-body">
-                    <p>Création de sites vitrines (hébergés sur GitHub Pages) et conception d'identités visuelles professionnelles (logos, bannières) pour des projets communautaires.</p>
-                    <div class="tags">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">IA Générative</span>
-                        <span class="tag">UI/UX</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="contact">
+    <section id="contact" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto;">
+        <div class="section-header">
             <h2 class="section-title">Me Contacter & Me Suivre</h2>
-            <p>Pour toute collaboration, question sur mes projets ou simplement pour échanger, voici les meilleures façons de me joindre. (J'ai volontairement gardé uniquement mes réseaux professionnels et créatifs ici pour protéger ma vie privée).</p>
-            
-            <div class="social-links">
-                <a href="https://discord.com/users/1281784488854159421" target="_blank" class="social-btn">
-                    <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-                    Discord
-                </a>
-                <a href="https://github.com/Jacobin904" target="_blank" class="social-btn">
-                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://www.roblox.com/users/4902316021/profile" target="_blank" class="social-btn">
-                    <svg viewBox="0 0 24 24"><path d="M5.164 0L0 18.816 18.836 24 24 5.184 5.164 0zm1.652 14.89l-1.32-4.83 4.83 1.32 1.32 4.83-4.83-1.32z"/></svg>
-                    Roblox
-                </a>
-                <a href="https://www.instagram.com/jacobin_babouain?igsh=MTVvd2pieGdoMHZkMA%3D%3D&utm_source=qr" target="_blank" class="social-btn">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    Instagram
-                </a>
-            </div>
+            <p class="section-subtitle">Pour toute collaboration, question sur mes projets ou simplement pour échanger. J'ai volontairement gardé ici mes canaux de communication principaux pour un contact direct et professionnel.</p>
+            <div class="divider"></div>
         </div>
+        
+        <div class="social-links">
+            <a href="https://discord.com/users/1281784488854159421" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                Discord (Principal)
+            </a>
+            <a href="https://github.com/Jacobin904" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+            </a>
+            <a href="https://www.roblox.com/users/4902316021/profile" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M5.164 0L0 18.816 18.836 24 24 5.184 5.164 0zm1.652 14.89l-1.32-4.83 4.83 1.32 1.32 4.83-4.83-1.32z"/></svg>
+                Roblox
+            </a>
+            <a href="https://www.instagram.com/jacobin_babouain?igsh=MTVvd2pieGdoMHZkMA%3D%3D&utm_source=qr" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Instagram
+            </a>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+            <em>Note : D'autres réseaux (Snapchat, Facebook, TikTok, Spotify) existent mais ne sont pas liés ici afin de préserver un espace public strictement professionnel et créatif.</em>
+        </p>
     </section>
 
     <footer>
-        <p>&copy; 2026 Jacob (Jacobin904). Tous droits réservés. Conçu avec détermination et intégrité au Québec.</p>
+        <p>&copy; 2026 Jacob Beaudoin (Jacobin904). Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Conçu avec détermination, intégrité et précision au Québec, QC.</p>
     </footer>
 
     <script>
@@ -288,7 +449,7 @@
             });
         });
 
-        const observerOptions = { threshold: 0.1 };
+        const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -298,10 +459,10 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.value-card, .project-card, .timeline-item, .social-btn').forEach(el => {
+        document.querySelectorAll('.card, .timeline-item, .highlight-box, .social-btn').forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
             observer.observe(el);
         });
     </script>
