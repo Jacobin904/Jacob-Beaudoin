@@ -3,104 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio exhaustif de Jacob (Jacobin904) - Développeur, architecte de projets IA, créateur de contenu et jeune homme résilient basé au Québec.">
-    <title>Jacob Beaudoin | Jacobin904 - Portfolio Exhaustif</title>
+    <meta name="description" content="Portfolio professionnel de Jacob (Jacobin904) - Développeur Web, Créateur de Bots Discord et Passionné de Roblox.">
+    <title>Jacob | Jacobin904 - Portfolio Professionnel</title>
     <style>
         :root {
-            --bg-primary: #0a0c10;
-            --bg-secondary: #11141c;
-            --bg-card: #1a1f2b;
-            --bg-card-hover: #222838;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --accent: #5865F2;
-            --accent-hover: #4752c4;
-            --quebec-blue: #0055A4;
-            --gradient: linear-gradient(135deg, #5865F2 0%, #00d2ff 100%);
-            --border: rgba(255, 255, 255, 0.08);
+            --bg-primary: #05070a;
+            --bg-secondary: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2128;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.15);
+            --gradient: linear-gradient(135deg, #58a6ff 0%, #3fb950 100%);
+            --border: rgba(240, 246, 252, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }
-        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.7; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         ul { list-style: none; }
+
+        /* Animations de base */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Navigation */
         nav {
-            position: fixed; top: 0; width: 100%; background-color: rgba(10, 12, 16, 0.95);
+            position: fixed; top: 0; width: 100%; background-color: rgba(5, 7, 10, 0.85);
             backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; padding: 1rem 5%;
         }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.6rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 2rem; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 2.5rem; }
         .nav-links a { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: var(--accent); transition: width 0.3s; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: var(--accent); transition: width 0.3s ease; }
         .nav-links a:hover { color: var(--text-primary); }
         .nav-links a:hover::after { width: 100%; }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
+        .menu-toggle { display: none; cursor: pointer; color: var(--text-primary); }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
             min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            padding: 0 5%; background: radial-gradient(circle at 80% 20%, rgba(88, 101, 242, 0.15), transparent 50%),
-                        radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.1), transparent 50%);
+            padding: 0 5%; position: relative; overflow: hidden;
         }
-        .hero-content h1 { font-size: 4rem; margin-bottom: 1.5rem; line-height: 1.1; font-weight: 800; }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            animation: gradientFlow 15s ease infinite; z-index: -1;
+        }
+        .hero-content h1 { font-size: 4.5rem; margin-bottom: 1.5rem; line-height: 1.1; font-weight: 800; animation: fadeInUp 1s ease-out; }
         .hero-content h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-content p { font-size: 1.3rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 2.5rem; }
+        .hero-content p { font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; animation: fadeInUp 1s ease-out 0.2s backwards; }
+        .hero-buttons { animation: fadeInUp 1s ease-out 0.4s backwards; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        
         .btn {
-            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.2rem; background: var(--accent); color: white;
-            border-radius: 8px; font-weight: 600; transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+            display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; background: var(--accent); color: #05070a;
+            border-radius: 8px; font-weight: 700; transition: all 0.3s ease; border: 2px solid var(--accent);
         }
-        .btn:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3); }
-        .btn-outline { background: transparent; border: 2px solid var(--accent); margin-left: 1rem; }
-        .btn-outline:hover { background: rgba(88, 101, 242, 0.1); box-shadow: none; }
+        .btn:hover { background: transparent; color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px var(--accent-glow); }
+        .btn-outline { background: transparent; color: var(--text-primary); border: 2px solid var(--border); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
 
         /* Sections */
-        section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
+        section { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-title { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; }
-        .section-subtitle { color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
-        .divider { width: 80px; height: 4px; background: var(--gradient); margin: 1rem auto 0; border-radius: 2px; }
+        .section-subtitle { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+        .divider { width: 60px; height: 4px; background: var(--gradient); margin: 1.5rem auto 0; border-radius: 2px; }
 
-        /* Cards & Grids */
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        /* Grids & Cards */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-
+        
         .card {
-            background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border);
-            transition: transform 0.3s, border-color 0.3s, background 0.3s;
+            background: var(--bg-card); padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: var(--bg-card-hover); }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+        }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent); background: var(--bg-card-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .card:hover::before { transform: scaleX(1); }
+        
         .card-icon { width: 48px; height: 48px; fill: var(--accent); margin-bottom: 1.5rem; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--text-primary); }
-        .card p, .card li { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-primary); }
+        .card p, .card li { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.6rem; }
         .card ul { padding-left: 1.2rem; }
-        .card ul li { list-style-type: disc; margin-bottom: 0.4rem; }
+        .card ul li { list-style-type: disc; }
 
         /* Timeline */
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
-        .timeline::before {
-            content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border);
-        }
-        .timeline-item {
-            position: relative; padding-left: 60px; margin-bottom: 3rem;
-        }
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+        .timeline-item { position: relative; padding-left: 60px; margin-bottom: 3rem; }
         .timeline-dot {
             position: absolute; left: 11px; top: 5px; width: 20px; height: 20px; border-radius: 50%;
             background: var(--bg-primary); border: 3px solid var(--accent); z-index: 2;
+            box-shadow: 0 0 0 4px var(--bg-primary);
         }
-        .timeline-content {
-            background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border);
-        }
+        .timeline-content { background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); }
         .timeline-content h3 { color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.8rem; }
-        .timeline-date { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; display: block; }
+        .timeline-date { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; display: block; font-weight: 600; }
 
         /* Highlight Box */
         .highlight-box {
-            background: linear-gradient(135deg, rgba(88, 101, 242, 0.1), rgba(0, 210, 255, 0.05));
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.05), rgba(63, 185, 80, 0.05));
             border-left: 4px solid var(--accent); padding: 2rem; border-radius: 0 12px 12px 0; margin: 2rem 0;
         }
         .highlight-box h4 { color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.2rem; }
@@ -115,8 +141,8 @@
         /* Tags */
         .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
         .tag { 
-            background: rgba(88, 101, 242, 0.15); color: var(--accent); padding: 0.3rem 0.9rem; 
-            border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(88, 101, 242, 0.3);
+            background: var(--accent-glow); color: var(--accent); padding: 0.3rem 0.9rem; 
+            border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(88, 166, 255, 0.3);
         }
 
         /* Social Links */
@@ -126,15 +152,16 @@
             padding: 1rem 2rem; border-radius: 12px; border: 1px solid var(--border);
             transition: all 0.3s ease; color: var(--text-primary); font-weight: 600;
         }
-        .social-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        .social-btn:hover { background: var(--accent); border-color: var(--accent); color: #05070a; transform: translateY(-5px); box-shadow: 0 10px 30px var(--accent-glow); }
         .social-btn svg { width: 22px; height: 22px; fill: currentColor; }
 
         /* Footer */
         footer { text-align: center; padding: 3rem 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border); background: var(--bg-secondary); }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 900px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 3rem; }
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -143,9 +170,7 @@
             }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            .btn-outline { margin-left: 0; margin-top: 1rem; display: flex; justify-content: center; }
+            .hero-content h1 { font-size: 2.5rem; }
             .timeline::before { left: 15px; }
             .timeline-item { padding-left: 50px; }
             .timeline-dot { left: 6px; }
@@ -161,10 +186,10 @@
                 <svg style="width: 28px; height: 28px; fill: white;" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#histoire">Mon Histoire</a></li>
-                <li><a href="#academique">Parcours Académique</a></li>
-                <li><a href="#technique">Équipement & Technique</a></li>
-                <li><a href="#projets">Projets Détaillés</a></li>
+                <li><a href="#histoire">Parcours</a></li>
+                <li><a href="#academique">Formation</a></li>
+                <li><a href="#technique">Technique</a></li>
+                <li><a href="#projets">Projets</a></li>
                 <li><a href="#personnel">Vie & Valeurs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -173,12 +198,12 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Je suis <span>Jacob Beaudoin</span></h1>
-            <p>Architecte de projets numériques, développeur assisté par IA et jeune homme résilient basé au Québec. Je transforme des visions complexes en écosystèmes Discord, Roblox et Web fonctionnels, réalistes et sécuritaires.</p>
-            <div>
+            <h1>Je suis <span>Jacob</span></h1>
+            <p>Développeur Web, créateur de bots Discord et architecte d'expériences Roblox. Je transforme des idées complexes en projets numériques structurés, réalistes et fonctionnels.</p>
+            <div class="hero-buttons">
                 <a href="#projets" class="btn">
-                    <svg style="width: 20px; height: 20px; fill: white;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                    Explorer mes projets
+                    <svg style="width: 20px; height: 20px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                    Voir mes projets
                 </a>
                 <a href="#contact" class="btn btn-outline">Me contacter</a>
             </div>
@@ -186,14 +211,14 @@
     </section>
 
     <section id="histoire">
-        <div class="section-header">
-            <h2 class="section-title">Mon Parcours de Résilience</h2>
-            <p class="section-subtitle">Les épreuves que j'ai traversées ont forgé mon caractère, mon sens de la justice et ma détermination à protéger ce qui compte vraiment.</p>
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Résilience & Détermination</h2>
+            <p class="section-subtitle">Les épreuves forgent le caractère. Mon parcours m'a appris l'importance des limites saines, de la vérité et de l'entourage fiable.</p>
             <div class="divider"></div>
         </div>
 
         <div class="timeline">
-            <div class="timeline-item">
+            <div class="timeline-item animate-on-scroll">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="timeline-date">Le tournant décisif</span>
@@ -201,200 +226,171 @@
                         <svg style="width: 24px; height: 24px; fill: var(--accent);" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                         Le courage de se tenir debout
                     </h3>
-                    <p>Tout a basculé un jour, sur un balcon au 5e étage à Sainte-Foy. Face à des menaces verbales de la part de mon ex-belle-mère et à l'inaction totale de mon père présent sur les lieux, j'ai fait le choix de parler. J'ai tout raconté à ma mère, Guylaine. Elle s'est tenue debout pour nous protéger, ma petite sœur Emmy et moi, et a engagé des procédures judiciaires.</p>
-                    <p style="margin-top: 1rem;"><strong>Résultat :</strong> La justice a tranché. Après plus de deux ans sans contact, la cour a officiellement suspendu les droits de décision de mon père sur ma vie (école, santé, passeports). La garde complète revient à ma mère, confirmant que nous sommes en sécurité avec elle. J'ai gagné ma liberté.</p>
+                    <p>J'ai dû faire face très jeune à des situations familiales complexes et à un manque de protection. J'ai eu le courage de parler et de demander de l'aide. Grâce à la détermination de ma famille pour nous protéger, la justice a fini par trancher en notre faveur, confirmant notre droit à la paix et à la sécurité.</p>
                 </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item animate-on-scroll">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="timeline-date">Juillet 2026</span>
+                    <span class="timeline-date">Leçon de vie</span>
                     <h3>
                         <svg style="width: 24px; height: 24px; fill: var(--accent);" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                        L'épreuve de la vérité et du discernement
+                        Discernement et limites saines
                     </h3>
-                    <p>J'ai fait face à une tentative de manipulation psychologique sur Discord par une personne utilisant de fausses identités ("Orélie Côté", puis "Magalie Bédard"). Profitant de mon empathie et de mon besoin d'affection, cette personne a utilisé le chantage affectif.</p>
-                    <p style="margin-top: 1rem;">Grâce au soutien lucide de mon amie Alicia, j'ai ouvert les yeux : fausses excuses, incohérences vocales, scénarios extravagants. <strong>Leçon retenue :</strong> Ma gentillesse est une force, mais mes limites sont sacrées. Quelqu'un qui m'aime vraiment ne me fera jamais de chantage et ne se cachera pas derrière un écran. J'ai appris à repérer les manipulateurs et à protéger mon espace mental.</p>
+                    <p>J'ai appris à mes dépens à identifier les comportements manipulateurs et le chantage affectif, notamment en ligne. Grâce au soutien lucide de <strong>Ma Bestie</strong>, qui a su me montrer la vérité quand j'étais aveuglé, j'ai compris une leçon essentielle : la gentillesse est une force, mais elle doit être protégée par des limites claires. Je n'accorde ma confiance qu'à ceux qui font leurs preuves par des actes.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="academique" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto;">
-        <div class="section-header">
-            <h2 class="section-title">Évolution Académique & Engagement</h2>
-            <p class="section-subtitle">Malgré l'anxiété et le TDAH, j'ai transformé mes défis en une courbe de progression constante, en misant sur mes forces et mon désir d'aider.</p>
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Formation & Implication</h2>
+            <p class="section-subtitle">Un parcours scolaire solide, marqué par une progression constante et un fort désir d'aider ma communauté.</p>
             <div class="divider"></div>
         </div>
 
         <div class="grid-3">
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <svg class="card-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                <h3>Fin du Primaire (2023-2024)</h3>
-                <p>École De Saint-Michel. Consolidation des bases avec succès.</p>
-                <ul>
-                    <li>Musique : <strong>97 %</strong></li>
-                    <li>Arts plastiques : <strong>84 %</strong></li>
-                    <li>Mathématiques : <strong>82 %</strong></li>
-                    <li>Sciences : <strong>79 %</strong></li>
-                </ul>
+                <h3>Fin du Primaire</h3>
+                <p>Obtention du diplôme avec de solides bases académiques, montrant déjà un fort potentiel créatif et analytique.</p>
             </div>
-            <div class="card">
-                <svg class="card-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                <h3>1re Secondaire (2024-2025)</h3>
-                <p>Académie Sainte-Marie. Période d'adaptation difficile en raison de soucis personnels, mais maintien des passions.</p>
-                <ul>
-                    <li>Esports : <strong>86 %</strong></li>
-                    <li>Sciences : <strong>75 %</strong> (avec félicitations de l'enseignant pour l'attitude)</li>
-                </ul>
+            <div class="card animate-on-scroll">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <h3>1re Secondaire</h3>
+                <p>Période d'adaptation réussie. Je me suis impliqué bénévolement en assurant du "facing" durant l'heure du dîner pour aider à l'ordre et au bien-être de l'école.</p>
             </div>
-            <div class="card">
-                <svg class="card-icon" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                <h3>2e & 3e Secondaire (2025-2026)</h3>
-                <p>Consolidation et maturité. Implication bénévole active (facing à l'heure du dîner, aide au personnel en fin d'année).</p>
-                <ul>
-                    <li>Anglais : <strong>90 %</strong> (dont 96 % à l'oral)</li>
-                    <li>Esports : <strong>93 %</strong></li>
-                    <li>Éducation physique : <strong>83 %</strong></li>
-                </ul>
+            <div class="card animate-on-scroll">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <h3>2e & 3e Secondaire</h3>
+                <p>Montée en puissance académique et maturité. J'ai offert mon aide à 100 % bénévolement après les cours. Mes résultats sont solides et mon attitude est régulièrement soulignée par le personnel.</p>
             </div>
-        </div>
-
-        <div class="highlight-box">
-            <h4>Mon engagement communautaire</h4>
-            <p>J'aime me sentir utile. J'ai effectué du "facing" bénévolement sur l'heure du dîner la moitié de l'année en secondaire 1, et j'ai aidé le personnel de l'école à 100 % bénévolement quand il n'y avait plus de cours en secondaire 2. J'apprends à trouver le juste milieu pour que mon aide soit toujours bien reçue.</p>
         </div>
     </section>
 
     <section id="technique">
-        <div class="section-header">
-            <h2 class="section-title">Écosystème Technique & Méthodologie</h2>
-            <p class="section-subtitle">Je ne suis pas seulement un exécutant, je suis un architecte. Je conçois la logique, le cahier des charges et la vision, puis j'orchestre des outils d'IA pour générer un code propre et efficace.</p>
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Écosystème Technique</h2>
+            <p class="section-subtitle">Une méthodologie de travail rigoureuse, centrée sur l'ordinateur, la gestion de version et les technologies web modernes.</p>
             <div class="divider"></div>
         </div>
 
         <div class="grid-2">
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <h3>
                     <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-                    Configuration Matérielle
+                    Environnement de Travail
                 </h3>
-                <div class="spec-row"><span class="spec-label">Ordinateur portable</span><span class="spec-value">Lenovo 11BD003HCA</span></div>
                 <div class="spec-row"><span class="spec-label">Système d'exploitation</span><span class="spec-value">Windows 11 Professionnel</span></div>
-                <div class="spec-row"><span class="spec-label">Processeur</span><span class="spec-value">Intel Core i5-9400</span></div>
-                <div class="spec-row"><span class="spec-label">Carte graphique</span><span class="spec-value">Intel UHD Graphics 630</span></div>
-                <div class="spec-row"><span class="spec-label">Mémoire vive (RAM)</span><span class="spec-value">8 Go</span></div>
                 <div class="spec-row"><span class="spec-label">Appareil mobile</span><span class="spec-value">iPhone 11 (iOS)</span></div>
+                <div class="spec-row"><span class="spec-label">Gestion de projet</span><span class="spec-value">GitHub (Version Control)</span></div>
             </div>
 
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <h3>
                     <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-                    Méthodologie de Développement
+                    Stack Technologique
                 </h3>
-                <p>Mon approche repose sur la <strong>direction technique et le prompt engineering avancé</strong>.</p>
+                <p>Je conçois l'architecture, la logique et le cahier des charges de mes projets, puis j'utilise des outils d'IA avancés pour générer et optimiser le code.</p>
                 <ul style="margin-top: 1rem;">
-                    <li>Rédaction de scripts et conception de bots via l'application <strong>Carnets</strong> sur iOS.</li>
-                    <li>Optimisation agressive du PC via scripts PowerShell (nettoyage, désinstallation de bloatware, amélioration des FPS et du réseau pour Roblox).</li>
-                    <li>Architecture de projets : je définis les règles, les structures de fichiers (main.py, admin.py, cad.py, etc.) et les objectifs, puis j'utilise l'IA pour produire le code que je valide et intègre.</li>
-                    <li>Hébergement et déploiement via <strong>GitHub Pages</strong>.</li>
+                    <li><strong>Web :</strong> HTML5, CSS3, JavaScript (fichiers <code>index.html</code> structurés, hébergés via GitHub Pages).</li>
+                    <li><strong>Bots Discord :</strong> Node.js (JavaScript), principalement via des fichiers <code>server.js</code> pour des architectures légères et efficaces.</li>
+                    <li><strong>Roblox :</strong> Lua scripting pour l'automatisation et l'immersion.</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="projets" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto;">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll">
             <h2 class="section-title">Projets & Réalisations</h2>
-            <p class="section-subtitle">Une sélection détaillée de mes travaux, axés sur le réalisme, la structure professionnelle et l'immersion.</p>
+            <p class="section-subtitle">Des projets concrets axés sur le réalisme, la structure professionnelle et l'expérience utilisateur.</p>
             <div class="divider"></div>
         </div>
 
         <div class="grid-3">
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <svg class="card-icon" viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
-                <h3>Serveur ER:LC Québec RP</h3>
-                <p>Création d'un serveur Roblox Emergency Response: Liberty County entièrement francophone et basé sur les véritables services québécois.</p>
+                <h3>Univers RP Québécois (Roblox)</h3>
+                <p>Création d'un serveur Emergency Response: Liberty County (ER:LC) francophone et réaliste, basé sur les services québécois (SQ, SPVQ, CTAQ, etc.).</p>
                 <div class="tags">
-                    <span class="tag">SPVQ</span><span class="tag">SQ</span><span class="tag">CTAQ</span>
-                    <span class="tag">SPCIQ</span><span class="tag">MTQ</span><span class="tag">RTC</span>
-                    <span class="tag">Postes Canada</span><span class="tag">Cour du Québec</span>
+                    <span class="tag">Lua</span><span class="tag">Game Design</span><span class="tag">Réalisme</span>
                 </div>
-                <p style="margin-top: 1rem; font-size: 0.85rem;">Travail minutieux sur les couleurs exactes (codes HEX), les bandes vertes/jaunes, les liveries, les sons, les scripts Lua et les documents RP officiels (permis, RAMQ RP, rapports).</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem;">Travail minutieux sur les liveries, les codes HEX des véhicules, les uniformes et la création de documents RP officiels.</p>
             </div>
 
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <svg class="card-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
-                <h3>Bot Discord & Système CAD</h3>
-                <p>Développement d'une suite d'outils Python modulaires pour la gestion professionnelle de serveurs.</p>
+                <h3>Écosystème Discord & CAD</h3>
+                <p>Développement de bots sur mesure pour la gestion professionnelle de serveurs communautaires.</p>
                 <ul>
-                    <li><strong>Modules :</strong> main.py, admin.py, cad.py, dispatch.py, verification.py, logs.py.</li>
-                    <li><strong>Fonctionnalités :</strong> Vérification croisée Roblox ↔ Discord, gestion des permissions, système de logs détaillé, formulaires automatisés et intégration d'outils comme Melonly.</li>
+                    <li>Vérification croisée Roblox ↔ Discord.</li>
+                    <li>Système de logs, gestion des permissions et formulaires automatisés.</li>
+                    <li>Intégration de tableaux de bord et outils de type CAD/Dispatch.</li>
                 </ul>
             </div>
 
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 <h3>Développement Web & Design</h3>
-                <p>Conception de sites web et d'identités visuelles pour des projets communautaires.</p>
+                <p>Conception de sites vitrines propres et d'identités visuelles pour des projets communautaires.</p>
                 <ul>
-                    <li>Site vitrine pour "Sherbrooke-RP" (hébergé sur GitHub Pages).</li>
-                    <li>Tableau de bord web avec détection automatique des rôles Discord.</li>
-                    <li>Création de logos professionnels (ex: projet "BS" en nuances d'orange, moderne et symétrique) et de bannières de serveur.</li>
+                    <li>Sites hébergés sur GitHub Pages.</li>
+                    <li>Création de logos professionnels, modernes et symétriques.</li>
+                    <li>Mise en page de bannières et structures de salons Discord uniformes.</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="personnel">
-        <div class="section-header">
-            <h2 class="section-title">Vie Personnelle, Loisirs & Valeurs</h2>
-            <p class="section-subtitle">Au-delà du code, je suis un jeune homme avec des passions, des principes et une vision claire de mes relations.</p>
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Vie Personnelle & Valeurs</h2>
+            <p class="section-subtitle">Au-delà du code, je suis une personne qui valorise l'authenticité, le réalisme et les relations saines.</p>
             <div class="divider"></div>
         </div>
 
         <div class="grid-2">
-            <div>
+            <div class="animate-on-scroll">
                 <div class="card" style="margin-bottom: 1.5rem;">
                     <h3>
                         <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                         Relations & Quête de sens
                     </h3>
-                    <p>Je suis actuellement célibataire. Je cherche à rencontrer une partenaire authentique, bienveillante, avec une belle voix et de belles qualités, qui saura me comprendre pour de vrai et m'aider à avancer. Avoir une personne de confiance sur qui compter, qui m'épaule et avec qui partager la vie, est quelque chose qui me tient énormément à cœur.</p>
-                    <p style="margin-top: 1rem;">Je dois beaucoup à mon entourage : ma mère <strong>Guylaine</strong>, mon pilier absolu, ma sœur <strong>Emmy</strong>, et mon amie <strong>Alicia Rioux</strong>, qui a su me protéger et me montrer la vérité quand j'en avais besoin. Je ne l'oublierai jamais.</p>
+                    <p>Je suis célibataire et je cherche à rencontrer une partenaire authentique, bienveillante et compréhensive, avec qui construire une relation de confiance et avancer ensemble dans la vie.</p>
+                    <p style="margin-top: 1rem;">Je suis très reconnaissant envers mon entourage proche, et particulièrement envers <strong>Ma Bestie</strong>, qui a su me protéger, m'ouvrir les yeux et me soutenir quand j'en avais le plus besoin.</p>
                 </div>
 
                 <div class="highlight-box">
-                    <h4>Ma métaphore personnelle</h4>
-                    <p>Parfois, j'ai une image forte dans ma tête : c'est comme si j'étais debout, avec une seule lumière allumée juste au-dessus de moi. J'ai très peur que si je fais quelque chose de travers, quelqu'un décide de l'éteindre et de me laisser dans le noir. C'est pourquoi je valorise tant la loyauté, la clarté et la douceur dans mes relations.</p>
+                    <h4>Ma philosophie</h4>
+                    <p>"Je m'efforce d'être une lumière pour les autres, tout en apprenant à protéger ma propre paix, à poser des limites claires et à m'entourer uniquement de personnes qui méritent ma confiance."</p>
                 </div>
             </div>
 
-            <div>
+            <div class="animate-on-scroll">
                 <div class="card" style="margin-bottom: 1.5rem;">
                     <h3>
                         <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
-                        Loisirs & Centres d'Intérêt
+                        Centres d'Intérêt
                     </h3>
                     <ul>
-                        <li><strong>Roblox :</strong> Passionné par les jeux de gestion, Tycoons (Restaurant Tycoon 2, Retail Tycoon 2) et simulateurs. J'analyse constamment les mécaniques de jeu pour améliorer mes propres créations.</li>
-                        <li><strong>Photographie :</strong> Pratique exclusive de la photo (pas de vidéo). J'aime capturer des moments et créer des identités visuelles.</li>
-                        <li><strong>Streaming :</strong> Création de contenu et animation de communauté sur Twitch.</li>
-                        <li><strong>Cuisine :</strong> J'apprécie l'efficacité et les repas simples et réconfortants, comme des œufs et des toasts bien préparés.</li>
-                        <li><strong>Optimisation numérique :</strong> Nettoyage régulier de mon empreinte numérique (ex: suppression des likes TikTok) et maintenance de mon système.</li>
+                        <li><strong>Roblox :</strong> Passionné par les jeux de gestion, Tycoons et simulateurs. J'analyse les mécaniques pour améliorer mes propres créations.</li>
+                        <li><strong>Photographie :</strong> Pratique exclusive de la photo. J'aime capturer des moments et créer des identités visuelles percutantes.</li>
+                        <li><strong>Cuisine :</strong> J'apprécie l'efficacité et les repas simples et réconfortants.</li>
+                        <li><strong>Optimisation numérique :</strong> Maintenance régulière de mon système et nettoyage de mon empreinte numérique pour rester efficace.</li>
                     </ul>
                 </div>
 
                 <div class="card">
                     <h3>
                         <svg style="width: 24px; height: 24px; fill: var(--accent); vertical-align: middle; margin-right: 8px;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        Mes Principes de Vie
+                        Principes de Travail
                     </h3>
                     <ul>
-                        <li>La gentillesse n'est pas une faiblesse, mais elle doit être protégée par des limites claires.</li>
-                        <li>Le réalisme et le détail font la différence entre un projet amateur et un projet professionnel.</li>
-                        <li>Je préfère recevoir toute l'information d'un coup, bien organisée et prête à l'emploi.</li>
+                        <li>Le réalisme et le détail font la différence entre un projet amateur et professionnel.</li>
+                        <li>Je préfère une communication directe, des informations complètes et des résultats bien organisés.</li>
                         <li>Je suis fier de mon chemin, je sais ce que je vaux, et je regarde l'avenir avec confiance.</li>
                     </ul>
                 </div>
@@ -403,66 +399,64 @@
     </section>
 
     <section id="contact" style="background: var(--bg-secondary); border-radius: 24px; margin: 2rem auto;">
-        <div class="section-header">
-            <h2 class="section-title">Me Contacter & Me Suivre</h2>
-            <p class="section-subtitle">Pour toute collaboration, question sur mes projets ou simplement pour échanger. J'ai volontairement gardé ici mes canaux de communication principaux pour un contact direct et professionnel.</p>
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Me Contacter</h2>
+            <p class="section-subtitle">Pour toute collaboration, question sur mes projets ou simplement pour échanger. Discord reste mon moyen de communication principal.</p>
             <div class="divider"></div>
         </div>
         
-        <div class="social-links">
+        <div class="social-links animate-on-scroll">
             <a href="https://discord.com/users/1281784488854159421" target="_blank" class="social-btn">
                 <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
                 Discord (Principal)
             </a>
-            <a href="https://github.com/Jacobin904" target="_blank" class="social-btn">
-                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
+            <a href="https://www.snapchat.com/add/ton_pseudo_snap" target="_blank" class="social-btn">
+                <svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.075.345-.12.525-.12.39 0 .75.18.99.495.255.33.315.765.165 1.155-.135.345-.42.615-.78.765-.555.225-1.275.315-1.95.315-.3 0-.585-.03-.84-.075-.18.675-.51 1.545-1.11 2.37.18.09.375.18.585.255 1.035.375 2.325.435 3.195.435.48 0 .9.39.9.87 0 .225-.09.435-.24.585-.405.405-1.245.63-2.355.63-.735 0-1.56-.105-2.325-.315-.435.81-1.08 1.575-1.95 2.205.645.315 1.335.57 2.07.75 1.245.3 2.61.36 3.36.36.48 0 .9.39.9.87 0 .225-.09.435-.24.585-.48.48-1.515.735-2.895.735-.99 0-2.085-.15-3.075-.435-.645-.18-1.245-.42-1.785-.705-.825.525-1.83.9-2.985 1.095-.3.045-.6.075-.9.075-.3 0-.6-.03-.9-.075-1.155-.195-2.16-.57-2.985-1.095-.54.285-1.14.525-1.785.705-.99.285-2.085.435-3.075.435-1.38 0-2.415-.255-2.895-.735-.15-.15-.24-.36-.24-.585 0-.48.42-.87.9-.87.75 0 2.115-.06 3.36-.36.735-.18 1.425-.435 2.07-.75-.87-.63-1.515-1.395-1.95-2.205-.765.21-1.59.315-2.325.315-1.11 0-1.95-.225-2.355-.63-.15-.15-.24-.36-.24-.585 0-.48.42-.87.9-.87.87 0 2.16-.06 3.195-.435.21-.075.405-.165.585-.255-.6-.825-.93-1.695-1.11-2.37-.255.045-.54.075-.84.075-.675 0-1.395-.09-1.95-.315-.36-.15-.645-.42-.78-.765-.15-.39-.09-.825.165-1.155.24-.315.6-.495.99-.495.18 0 .36.045.525.12.375.18.735.285 1.035.301.195 0 .325-.045.4-.09-.008-.165-.018-.33-.03-.51l-.003-.06c-.105-1.628-.23-3.654.299-4.847C7.859 1.069 11.216.793 12.206.793z"/></svg>
+                Snapchat
             </a>
             <a href="https://www.roblox.com/users/4902316021/profile" target="_blank" class="social-btn">
                 <svg viewBox="0 0 24 24"><path d="M5.164 0L0 18.816 18.836 24 24 5.184 5.164 0zm1.652 14.89l-1.32-4.83 4.83 1.32 1.32 4.83-4.83-1.32z"/></svg>
                 Roblox
             </a>
-            <a href="https://www.instagram.com/jacobin_babouain?igsh=MTVvd2pieGdoMHZkMA%3D%3D&utm_source=qr" target="_blank" class="social-btn">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram
-            </a>
         </div>
-        <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
-            <em>Note : D'autres réseaux (Snapchat, Facebook, TikTok, Spotify) existent mais ne sont pas liés ici afin de préserver un espace public strictement professionnel et créatif.</em>
-        </p>
     </section>
 
     <footer>
-        <p>&copy; 2026 Jacob Beaudoin (Jacobin904). Tous droits réservés.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Conçu avec détermination, intégrité et précision au Québec, QC.</p>
+        <p>&copy; 2026 Jacob (Jacobin904). Tous droits réservés.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-secondary);">Conçu avec détermination, intégrité et précision au Québec, QC.</p>
     </footer>
 
     <script>
+        // Menu mobile
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
 
+        // Fermer le menu au clic sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
 
-        const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -50px 0px" };
+        // Animation au défilement (Intersection Observer)
+        const observerOptions = { 
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('is-visible');
+                    // Optionnel : arrêter d'observer une fois animé pour la performance
+                    // observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.card, .timeline-item, .highlight-box, .social-btn').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
     </script>
