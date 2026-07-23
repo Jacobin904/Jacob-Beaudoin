@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Jacob (Jacobin904) - Développeur Discord, Créateur de contenu et Passionné de RP Québécois.">
+    <title>Jacob | Jacobin904 - Portfolio</title>
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-primary: #0f1115;
+            --bg-secondary: #161920;
+            --bg-card: #1e222b;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --accent: #5865F2; /* Discord Blurple */
+            --accent-hover: #4752c4;
+            --quebec-blue: #0055A4;
+            --gradient: linear-gradient(135deg, #5865F2 0%, #00d2ff 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 17, 21, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            padding: 1rem 5%;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            background: radial-gradient(circle at top right, rgba(88, 101, 242, 0.15), transparent 40%);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(88, 101, 242, 0.1);
+        }
+
+        /* --- SECTIONS GÉNÉRALES --- */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- À PROPOS --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- COMPÉTENCES --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- PROJETS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-header h3 {
+            color: var(--accent);
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(88, 101, 242, 0.15);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- CENTRES D'INTÉRÊT --- */
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .interest-pill {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact {
+            text-align: center;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Jacobin904</a>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#interests">Intérêts</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Salut, je suis <span>Jacob</span></h1>
+            <p>Développeur Discord, Créateur de contenu et Passionné par la création d'expériences RP québécoises réalistes et immersives.</p>
+            <div>
+                <a href="#projects" class="btn">Voir mes projets</a>
+                <a href="https://github.com/Jacobin904" target="_blank" class="btn btn-outline">Mon GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about">
+        <h2 class="section-title">À propos de moi</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Basé au <strong>Québec, Canada</strong>, je suis un développeur autodidacte et un créateur de contenu passionné par le réalisme et l'organisation. Je consacre mon temps libre à concevoir des écosystèmes numériques complets, alliant bots Discord, sites web et intégration Roblox.</p>
+                <p>Mon approche est axée sur le détail : que ce soit pour reproduire fidèlement les véhicules et uniformes des services d'urgence québécois (SQ, SPVQ, CTAQ) ou pour architecturer un serveur Discord avec une structure professionnelle et uniforme.</p>
+                <p>En dehors du développement, je suis photographe (uniquement photo), streamer sur Twitch, et j'aime les choses simples et efficaces, comme une bonne cuisine rapide à base d'œufs et de toasts.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <h3>Discord</h3>
+                    <p>Développement de bots & gestion de serveurs professionnels</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Roblox</h3>
+                    <p>Spécialiste ER:LC & création d'environnements RP québécois</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Web</h3>
+                    <p>Conception de sites vitrines et tableaux de bord intégrés</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Design</h3>
+                    <p>Identité visuelle, logos professionnels et bannières</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="skills">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <h3>Développement Discord</h3>
+                <p>Création de bots en Python (gestion, CAD, dispatch, vérification Roblox, logs, permissions). Maîtrise de l'API Discord et du Developer Portal.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>Développement Web</h3>
+                <p>HTML, CSS, JavaScript. Conception de sites reliés à des serveurs Discord avec détection de rôles et tableaux de bord (hébergement via GitHub Pages).</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎮</div>
+                <h3>Roblox Studio (Lua)</h3>
+                <p>Scripting d'interfaces, systèmes de chargement, gestion de véhicules et optimisation de l'expérience utilisateur pour des serveurs RP.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3>Design Graphique</h3>
+                <p>Création d'identités visuelles cohérentes, logos modernes et symétriques, et mise en page professionnelle de documents RP (permis, rapports, etc.).</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚙️</div>
+                <h3>Optimisation Système</h3>
+                <p>Scripts PowerShell, nettoyage et optimisation des performances Windows pour maximiser les FPS et la stabilité sur des configurations modestes.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📸</div>
+                <h3>Photographie & Streaming</h3>
+                <p>Création de contenu visuel statique de haute qualité et animation de communauté via le streaming sur Twitch.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projects">
+        <h2 class="section-title">Projets Réalisés</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Ville de Québec RP / Sherbrooke-RP</h3>
+                </div>
+                <div class="project-body">
+                    <p>Conception complète d'un serveur Emergency Response: Liberty County (ER:LC) francophone et réaliste, basé sur les services québécois (SPVQ, SQ, CTAQ, SPCIQ, MTQ, RTC). Inclut la création de liveries fidèles, d'uniformes, et de documents RP officiels.</p>
+                    <div class="tags">
+                        <span class="tag">Roblox</span>
+                        <span class="tag">Lua</span>
+                        <span class="tag">Game Design</span>
+                        <span class="tag">Réalisme</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Écosystème Discord & CAD</h3>
+                </div>
+                <div class="project-body">
+                    <p>Développement d'une suite d'outils Discord interconnectés : système de vérification Roblox ↔ Discord, tableau de bord web, gestion des logs, formulaires automatisés et intégration d'un système CAD/Dispatch pour les interventions RP.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Discord API</span>
+                        <span class="tag">Webhook</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Identités Visuelles & Web</h3>
+                </div>
+                <div class="project-body">
+                    <p>Création de sites web gratuits et d'identités visuelles pour des projets communautaires. Conception de logos professionnels (ex: projet "BS"), de bannières de serveur et de structures de salons Discord uniformes et esthétiques.</p>
+                    <div class="tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Graphic Design</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENTRES D'INTÉRÊT -->
+    <section id="interests">
+        <h2 class="section-title">Centres d'Intérêt</h2>
+        <div class="interests-container">
+            <div class="interest-pill">🎮 Roblox (Tycoons & ER:LC)</div>
+            <div class="interest-pill">📸 Photographie</div>
+            <div class="interest-pill">📺 Streaming Twitch</div>
+            <div class="interest-pill">🍳 Cuisine simple et efficace</div>
+            <div class="interest-pill">🚔 Services d'urgence québécois</div>
+            <div class="interest-pill">💻 Optimisation PC & Automatisation</div>
+            <div class="interest-pill">🤖 Intelligence Artificielle</div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact">
+            <h2 class="section-title">Travaillons ensemble</h2>
+            <p>Je suis toujours ouvert à discuter de nouveaux projets, d'idées d'optimisation ou de collaborations autour de la création de serveurs RP professionnels et réalistes.</p>
+            <a href="https://github.com/Jacobin904" target="_blank" class="btn">Me contacter sur GitHub</a>
+            <a href="https://discord.com/users/Jacobin904" target="_blank" class="btn btn-outline">M'ajouter sur Discord</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Jacob (Jacobin904). Tous droits réservés. Conçu avec précision et passion au Québec, QC.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menu mobile toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Fermer le menu mobile lors du clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Animation d'apparition au scroll (simple et léger)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
