@@ -10,7 +10,7 @@ from discord import app_commands
 from discord.ext import commands
 
 # ============================ CONFIG =================================
-TOKEN          = "TON_TOKEN_ICI"
+TOKEN = os.getenv("DISCORD_TOKEN", "")
 OWNER_IDS      = [1281784488854159421]            # Jacobin904 (+ jerome/vanille si voulu)
 GUILD_ID       = 1442003095377674414              # sync instantané des slash cmds
 JOIN_CODE      = "SHERBRP"
